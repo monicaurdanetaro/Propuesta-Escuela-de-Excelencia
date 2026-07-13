@@ -131,13 +131,19 @@
   .diag-card p{font-size:14px; color:var(--ink-soft);}
 
   /* ---------- MODELO DUAL ---------- */
+  .decision-flow{display:flex; flex-direction:column; align-items:center; gap:0;}
   .decision-node{
     display:flex; align-items:center; justify-content:center; gap:12px;
-    background:var(--navy); color:#fff; border-radius:14px; padding:18px 26px;
-    max-width:520px; margin:0 auto 0; text-align:center; box-shadow:var(--shadow);
+    color:#fff; border-radius:14px; padding:16px 26px;
+    max-width:520px; text-align:center; box-shadow:var(--shadow);
     font-family:'Poppins',sans-serif; font-weight:600; font-size:14.5px;
   }
-  .decision-node .dtag{display:block; font-size:10.5px; font-weight:600; color:#BFE3F2; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; font-family:'Public Sans';}
+  .decision-node.level1{background:var(--sky-deep);}
+  .decision-node.level2{background:var(--navy);}
+  .decision-node .dtag{display:block; font-size:10.5px; font-weight:600; color:#DDEEF6; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; font-family:'Public Sans';}
+  .decision-arrow{
+    font-size:18px; color:var(--ink-soft); padding:6px 0;
+  }
   .branch-lines{
     position:relative; height:44px; max-width:640px; margin:0 auto;
   }
@@ -404,8 +410,14 @@
     <p>La Escuela de Excelencia no elige un camino u otro por defecto: Auditoría y Operaciones entregan la data, Capacitación decide.</p>
   </div>
 
-  <div class="decision-node reveal">
-    <div><span class="dtag">Clasifican el proceso</span>Auditoría + Operaciones</div>
+  <div class="decision-flow reveal">
+    <div class="decision-node level1">
+      <div><span class="dtag">Evalúan criticidad y riesgo del proceso</span>Auditoría + Operaciones</div>
+    </div>
+    <div class="decision-arrow">↓</div>
+    <div class="decision-node level2">
+      <div><span class="dtag">Decide el camino y planifica el año</span>Capacitación</div>
+    </div>
   </div>
   <div class="branch-lines reveal">
     <svg viewBox="0 0 640 44" preserveAspectRatio="none">
@@ -418,20 +430,24 @@
     <div class="dual-card refuerzo">
       <div class="dtop"><div class="dicon">R</div><div class="dlabel">Camino 1</div></div>
       <h3>Refuerzo</h3>
-      <p>Para procesos de riesgo medio o bajo. Curso o pastilla en Academia Farmatodo, con evaluación teórica. Rápido de desplegar y de actualizar cuando el proceso cambia.</p>
+      <p>Para procesos que Capacitación refuerza cuando Auditoría los reporta con riesgo medio o bajo. Curso o píldora en Academia Farmatodo, con evaluación teórica. Rápido de desplegar y de actualizar cuando el proceso cambia.</p>
       <div class="dfoot">Vehículo: contenido asíncrono en Academia</div>
     </div>
     <div class="dual-card reentreno">
       <div class="dtop"><div class="dicon">RE</div><div class="dlabel">Camino 2</div></div>
       <h3>Reentrenamiento</h3>
-      <p>Para procesos críticos señalados por Auditoría. Formación presencial en tienda con certificación práctica observada. El video pasa a ser refuerzo posterior, no el punto de partida.</p>
+      <p>Para procesos que Capacitación reentrena cuando Auditoría los reporta como críticos o de alto riesgo. Formación presencial en tienda con certificación práctica observada. El video pasa a ser refuerzo posterior, no el punto de partida.</p>
       <div class="dfoot">Vehículo: formación in situ + Academia como refuerzo</div>
     </div>
   </div>
 
   <div class="callout reveal">
     <div class="cmark">?</div>
-    <p><b>¿Quién decide el camino?</b> Auditoría, en conjunto con Operaciones, evalúa cada proceso según su peso en hallazgos, riesgo y frecuencia, y determina si va por refuerzo o por reentrenamiento. Capacitación ejecuta la metodología que corresponde — no decide la clasificación por su cuenta.</p>
+    <p><b>¿Quién decide qué?</b> Auditoría, junto con Operaciones, entrega el diagnóstico de qué tan crítico es cada proceso y qué riesgo implica. Con esa data, Capacitación decide si el proceso va por refuerzo o por reentrenamiento — Auditoría no elige el camino, aporta la evidencia para elegirlo.</p>
+  </div>
+  <div class="callout reveal" style="margin-top:14px;">
+    <div class="cmark">↻</div>
+    <p><b>Corte anual de planificación.</b> Cada nuevo año fiscal se define, con esta misma lógica, qué procesos se trabajarán ese año y bajo qué camino. Durante el año se hacen revisiones periódicas con Auditoría y Operaciones para validar cambios de criticidad o riesgo.</p>
   </div>
 </section>
 
@@ -534,12 +550,12 @@
       <div class="fnum">03<span class="flabel">Sostenimiento</span></div>
       <div>
         <h3>Refuerzo espaciado y verificación</h3>
-        <p>Academia envía pastillas de refuerzo (día 1, 7 y 30). El supervisor de tienda da feedback continuo y observa ejecución en piso. Auditoría dispara reentrenamiento dirigido si detecta desviación.</p>
+        <p>Academia envía píldoras de refuerzo (día 1, 7 y 30). El supervisor de tienda da feedback continuo y observa ejecución en piso. Auditoría dispara reentrenamiento dirigido si detecta desviación.</p>
         <div class="who">Ejecuta: Supervisor de tienda · Supervisa: Key User de Zona</div>
       </div>
       <div class="cert-box">
         <div class="ctitle">Certificación de fase</div>
-        <div class="cert-row"><div class="cert-ico">T</div><div class="ctext"><b>Teórica:</b> pastilla de reforzamiento con verificación de comprensión.</div></div>
+        <div class="cert-row"><div class="cert-ico">T</div><div class="ctext"><b>Teórica:</b> píldora de reforzamiento con verificación de comprensión.</div></div>
         <div class="cert-row"><div class="cert-ico">P</div><div class="ctext"><b>Práctica:</b> observación de piso por el supervisor + resultado de auditoría como validación final.</div></div>
       </div>
     </div>
@@ -562,19 +578,19 @@
 
     <div class="flow">
       <div class="fstep">
-        <div class="fstep-tag">Pre-test</div>
+        <div class="fstep-tag">Pre-test · Octubre</div>
         <h4>Línea base de auditoría</h4>
         <p>Se toma el resultado de auditoría del área piloto en los procesos de Pilares de la Operación, antes de cualquier intervención.</p>
       </div>
       <div class="fstep">
-        <div class="fstep-tag">Intervención</div>
+        <div class="fstep-tag">Intervención · Ene – Feb</div>
         <h4>Despliegue del modelo completo</h4>
         <p>Se ejecutan las tres fases — formación de facilitadores, despliegue en tienda y sostenimiento — solo en el área seleccionada.</p>
       </div>
       <div class="fstep">
-        <div class="fstep-tag">Post-test</div>
+        <div class="fstep-tag">Post-test · Abril</div>
         <h4>Nueva medición de auditoría</h4>
-        <p>Se vuelve a auditar el mismo área y los mismos procesos, y se compara el desplazamiento frente a la línea base.</p>
+        <p>Se vuelve a auditar el mismo área y los mismos procesos, dando marzo como margen de instalación, y se compara el desplazamiento frente a la línea base.</p>
       </div>
     </div>
 
@@ -591,34 +607,34 @@
   <div class="section-head reveal">
     <div>
       <span class="kicker">RUTA DE IMPLEMENTACIÓN</span>
-      <h2>Arranque con el nuevo año fiscal, en agosto</h2>
+      <h2>Arranque del nuevo año fiscal, desde septiembre</h2>
     </div>
   </div>
   <div class="roadmap reveal">
     <div class="rstep">
-      <div class="rmonth">Jun – Jul</div>
-      <h4>Preparación</h4>
-      <p>Auditoría y Operaciones priorizan procesos críticos. Se construye el kit de facilitador y se seleccionan Super Key Users y Key Users de Zona.</p>
+      <div class="rmonth">Septiembre</div>
+      <h4>Diagnóstico y planificación</h4>
+      <p>Auditoría identifica procesos críticos y de riesgo vs. no críticos. Capacitación define cómo se trabajará cada uno y hace la planificación del año, revisada con Operaciones y RRHH Operaciones.</p>
     </div>
     <div class="rstep">
-      <div class="rmonth">Agosto</div>
-      <h4>Piloto</h4>
-      <p>Pre-test de auditoría, certificación de facilitadores y despliegue completo en el área crítica de Pilares de la Operación.</p>
+      <div class="rmonth">Octubre</div>
+      <h4>Preparación del piloto</h4>
+      <p>Capacitación prepara materiales y define Super Key Users y Key Users de Zona. Auditoría comparte la data de los últimos meses en Pilares de la Operación como pre-test.</p>
     </div>
     <div class="rstep">
-      <div class="rmonth">Sep – Oct</div>
-      <h4>Medición</h4>
-      <p>Post-test de auditoría, análisis de desplazamiento y ajuste del modelo antes de escalar.</p>
+      <div class="rmonth">Noviembre</div>
+      <h4>Formación de facilitadores</h4>
+      <p>El Super Key User forma a los Key Users de Zona. Capacitación entrega a cada uno el cronograma de sus formaciones en tienda.</p>
     </div>
     <div class="rstep">
-      <div class="rmonth">Nov – Dic</div>
-      <h4>Escalamiento</h4>
-      <p>Despliegue del modelo validado al resto de las áreas en Venezuela y Colombia, por oleadas.</p>
+      <div class="rmonth">Ene – Feb</div>
+      <h4>Despliegue en tienda</h4>
+      <p>Los Key Users de Zona bajan a sus tiendas asignadas a formar y certificar a los colaboradores, con estos dos meses como ventana de cobertura.</p>
     </div>
     <div class="rstep">
-      <div class="rmonth">Permanente</div>
-      <h4>Ciclo continuo</h4>
-      <p>Revisión periódica de criticidad de procesos con Auditoría y Operaciones, y reentrenamiento dirigido por hallazgos.</p>
+      <div class="rmonth">Abril</div>
+      <h4>Medición y comparación</h4>
+      <p>Auditoría vuelve a medir los procesos de Pilares de la Operación y se compara contra la línea base de octubre. Marzo queda como margen para que los comportamientos reforzados se instalen antes de medir.</p>
     </div>
   </div>
 </section>
@@ -631,7 +647,7 @@
     </div>
     <div class="ask-list">
       <div class="ask"><span class="anum">1</span> Aprobar el modelo dual — reforzar o reentrenar — según la clasificación de Auditoría y Operaciones.</div>
-      <div class="ask"><span class="anum">2</span> Autorizar el piloto de agosto en los procesos de Pilares de la Operación.</div>
+      <div class="ask"><span class="anum">2</span> Autorizar el piloto que inicia en septiembre en los procesos de Pilares de la Operación.</div>
       <div class="ask"><span class="anum">3</span> Definir junto a Operaciones a los Super Key Users por proceso crítico y a los supervisores responsables en tienda.</div>
     </div>
   </div>
